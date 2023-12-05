@@ -4,10 +4,6 @@ description: Get a random name!
 
 # 👤 Name Generation
 
-{% hint style="info" %}
-This feature requires a working Internet connection.
-{% endhint %}
-
 Using this function is very simple! Just use the `Textify.Online.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.Online.NameGen;`
 
 Just use the `NameGenerator` class that contains:
