@@ -11,8 +11,6 @@
   * [📅 Semantic Versioning](usage/how-to-use/semantic-versioning.md)
   * [👤 Name Generation](usage/how-to-use/name-generation.md)
   * [🖊 Word Selection](usage/how-to-use/word-selection.md)
-  * [📘 English Dictionary](usage/how-to-use/english-dictionary.md)
-  * [📧 Address Investigator](usage/how-to-use/address-investigator.md)
 * [⚒ How it works](usage/how-it-works/README.md)
   * [🗑 VT Sequences Internals](usage/how-it-works/vt-sequences-internals.md)
   * [☑ Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)

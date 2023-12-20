@@ -26,14 +26,6 @@ The following features are available:
 [semantic-versioning.md](semantic-versioning.md)
 {% endcontent-ref %}
 
-{% content-ref url="english-dictionary.md" %}
-[english-dictionary.md](english-dictionary.md)
-{% endcontent-ref %}
-
-{% content-ref url="address-investigator.md" %}
-[address-investigator.md](address-investigator.md)
-{% endcontent-ref %}
-
 {% content-ref url="name-generation.md" %}
 [name-generation.md](name-generation.md)
 {% endcontent-ref %}
