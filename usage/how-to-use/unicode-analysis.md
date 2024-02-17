@@ -4,6 +4,10 @@ description: Any special characters?
 
 # 🀄 Unicode Analysis
 
+{% hint style="info" %}
+Your applications will have to call `DataInitializer.Initialize()` before being able to use any of Unicode, Names, and Words.
+{% endhint %}
+
 Using this functionality that is available on Textify is very simple! Just use the `Textify.Unicode` namespace in any piece of code you want to use the library, as in: `using Textify.Unicode;`
 
 Just use the `UnicodeQuery` class that contains:

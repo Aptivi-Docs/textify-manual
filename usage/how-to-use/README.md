@@ -10,8 +10,8 @@ Some of the features require an internet connection to be usable, but they're us
 
 The following features are available:
 
-{% content-ref url="vt-sequences.md" %}
-[vt-sequences.md](vt-sequences.md)
+{% content-ref url="broken-reference" %}
+[Broken link](broken-reference)
 {% endcontent-ref %}
 
 {% content-ref url="space-analysis-and-correction.md" %}

@@ -4,7 +4,11 @@ description: Get a random name!
 
 # 👤 Name Generation
 
-Using this function is very simple! Just use the `Textify.Online.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.Online.NameGen;`
+{% hint style="info" %}
+Your applications will have to call `DataInitializer.Initialize()` before being able to use any of Unicode, Names, and Words.
+{% endhint %}
+
+Using this function is very simple! Just use the `Textify.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.NameGen;`
 
 Just use the `NameGenerator` class that contains:
 
