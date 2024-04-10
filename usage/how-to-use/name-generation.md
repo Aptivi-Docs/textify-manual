@@ -4,11 +4,7 @@ description: Get a random name!
 
 # 👤 Name Generation
 
-{% hint style="info" %}
-Your applications will have to call `DataInitializer.Initialize()` before being able to use any of Unicode, Names, and Words.
-{% endhint %}
-
-Using this function is very simple! Just use the `Textify.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.NameGen;`
+Using this function is very simple! Just use the `Textify.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.Data.Analysis.NameGen;`
 
 Just use the `NameGenerator` class that contains:
 
@@ -33,3 +29,7 @@ Thomas Dawsey
 Thalia Ermey
 (...)
 ```
+
+You can specify the name gender type using the `NameGenderType` enumeration when calling any of the first name generation functions.
+
+In addition to that, you can get the full list of first and last names with the ability to consider the gender selection.

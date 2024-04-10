@@ -2,7 +2,7 @@
 description: Changes that break the API
 ---
 
-# 🗞 Breaking changes
+# 🗞️ Breaking changes
 
 There are versions of Textify that may bring breaking changes with it. As a result, we'll have to list them to avoid being in the dark.
 
@@ -42,8 +42,26 @@ We have temporarily removed VT sequence classes from Textify while migrating the
 * `Truncate()`
 
 {% hint style="info" %}
-We promise that we'll bring these functions back, but without VT sequences. Should you make use of these functions with support for VT sequences, you have two options:
+**We brought back these functions!**
 
-* Upgrade to Terminaux 3.0 and use its `ConsoleMisc` extension class.
-* Downgrade to Textify 1.3.2 and Terminaux 2.7.2.
+~~We promise that we'll bring these functions back, but without VT sequences. Should you make use of these functions with support for VT sequences, you have two options:~~
+
+* ~~Upgrade to Terminaux 3.0 and use its `ConsoleMisc` extension class.~~
+* ~~Downgrade to Textify 1.3.2 and Terminaux 2.7.2.~~
 {% endhint %}
+
+### Textify 1.3.x to 1.5.x
+
+Textify 1.5.x contains the following breaking changes that you must do in order for your applications to continue working:
+
+#### Split JSON functions to Textify.Json
+
+We've split JSON functions to `Textify.Json` as it forms a very small fraction of the main library. This is to ensure that the main library is scalable.
+
+### Textify 1.5.x to 1.6.x
+
+Textify 1.6.x contains the following breaking changes that you must do in order for your applications to continue working:
+
+#### Split data-based functions to Textify.Data.Json
+
+We've split data-based functions, such as words and names, to `Textify.Data.Json` to reduce the main library distribution and download size. This is to ensure that the main library users are able to use it without having to download 30+ MB of assets.

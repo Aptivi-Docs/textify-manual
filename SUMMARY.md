@@ -1,24 +1,22 @@
 # Table of contents
 
 * [👋 Welcome](README.md)
-* [🗞 Breaking changes](breaking-changes.md)
+* [🗞️ Breaking changes](breaking-changes.md)
 
 ## Usage
 
-* [🖥 How to use](usage/how-to-use/README.md)
+* [🖥️ How to use](usage/how-to-use/README.md)
   * [✅ Space Analysis and Correction](usage/how-to-use/space-analysis-and-correction.md)
   * [🀄 Unicode Analysis](usage/how-to-use/unicode-analysis.md)
   * [📅 Semantic Versioning](usage/how-to-use/semantic-versioning.md)
   * [👤 Name Generation](usage/how-to-use/name-generation.md)
-  * [🖊 Word Selection](usage/how-to-use/word-selection.md)
-* [⚒ How it works](usage/how-it-works/README.md)
-  * [☑ Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)
-  * [🕉 Unicode Analyzer Internals](usage/how-it-works/unicode-analyzer-internals.md)
-  * [🗓 Semantic Versioning Internals](usage/how-it-works/semantic-versioning-internals.md)
-  * [📚 English Dictionary Internals](usage/how-it-works/english-dictionary-internals.md)
-  * [📬 Address Investigator Internals](usage/how-it-works/address-investigator-internals.md)
+  * [🖊️ Word Management](usage/how-to-use/word-management.md)
+* [⚒️ How it works](usage/how-it-works/README.md)
+  * [☑️ Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)
+  * [🕉️ Unicode Analyzer Internals](usage/how-it-works/unicode-analyzer-internals.md)
+  * [🗓️ Semantic Versioning Internals](usage/how-it-works/semantic-versioning-internals.md)
   * [👥 Name Generation Internals](usage/how-it-works/name-generation-internals.md)
-  * [🖋 Word Selection Internals](usage/how-it-works/word-selection-internals.md)
+  * [🖋️ Word Selection Internals](usage/how-it-works/word-selection-internals.md)
 
 ***
 

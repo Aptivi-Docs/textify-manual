@@ -15,7 +15,7 @@ This library is very easy to install. It's available at [NuGet](https://www.nuge
 1. Open your project file (`.csproj` or `.fsproj`)
 2. Place the `PackageReference` line on a property group like so:
    * `<PackageReference Include="Textify.Offline" Version="x.x.x" />`
-   * `<PackageReference Include="Textify.Online" Version="x.x.x" />`
+   * `<PackageReference Include="Textify.Data.Analysis" Version="x.x.x" />`
    * ...where `Version` is the current version of the library
 3. Run a package restore using `dotnet restore`
 
