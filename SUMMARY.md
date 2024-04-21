@@ -11,6 +11,7 @@
   * [📅 Semantic Versioning](usage/how-to-use/semantic-versioning.md)
   * [👤 Name Generation](usage/how-to-use/name-generation.md)
   * [🖊️ Word Management](usage/how-to-use/word-management.md)
+  * [👨‍🦽 Accessibility Tools](usage/how-to-use/accessibility-tools.md)
 * [⚒️ How it works](usage/how-it-works/README.md)
   * [☑️ Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)
   * [🕉️ Unicode Analyzer Internals](usage/how-it-works/unicode-analyzer-internals.md)

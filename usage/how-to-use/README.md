@@ -30,4 +30,8 @@ The following features are available in the base Textify library:
 [semantic-versioning.md](semantic-versioning.md)
 {% endcontent-ref %}
 
+{% content-ref url="accessibility-tools.md" %}
+[accessibility-tools.md](accessibility-tools.md)
+{% endcontent-ref %}
+
 For general usage of the text manipulation library, you can use the `TextTools` class to get access to various string manipulators. This class is found in the `Textify.General` namespace.

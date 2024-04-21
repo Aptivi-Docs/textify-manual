@@ -24,8 +24,10 @@ You can also select one of the following flavors of the word list:
 * `WordsDirty`
 * `WordsDirtyFull`
 * `BadWords`
+* `CommonWords`
+* `CommonWordsDirty`
 
-{% hint style="undefined" %}
+{% hint style="info" %}
 The last three word flavors contains offensive words that may not be suitable for users and developers, so it's best not to use them unless you have a reason to, such as swearing filters that Textify provides. Considering this point, we've decided to move the words list to its own flavor, `WordsDirty`, and clean all possible offensive words in the `Words` flavor.
 {% endhint %}
 
