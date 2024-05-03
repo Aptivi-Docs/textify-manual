@@ -34,4 +34,4 @@ The following features are available in the base Textify library:
 [accessibility-tools.md](accessibility-tools.md)
 {% endcontent-ref %}
 
-For general usage of the text manipulation library, you can use the `TextTools` class to get access to various string manipulators. This class is found in the `Textify.General` namespace.
+For general usage of the text manipulation library, you can use the `TextTools` class to get access to various string manipulators. This class is found in the `Textify.General` namespace. Additionally, the JSON tools can be found in the `JsonTools` class (found in the `Textify.Json` namespace) to get access to various JSON tools, such as getting a difference between two JSON objects.
