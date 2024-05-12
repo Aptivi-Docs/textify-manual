@@ -65,3 +65,11 @@ Textify 1.6.x contains the following breaking changes that you must do in order 
 #### Split data-based functions to Textify.Data.Json
 
 We've split data-based functions, such as words and names, to `Textify.Data.Json` to reduce the main library distribution and download size. This is to ensure that the main library users are able to use it without having to download 30+ MB of assets.
+
+### Textify 1.6.x to 1.9.x
+
+Textify 1.9.x contains the following breaking changes that you must do in order for your applications to continue working:
+
+#### Moved Figletize to Textify.Figlet
+
+As part of the migration effort, we've decided to migrate Figletize and its assets to the Textify.Figlet library that you can download from NuGet. Please note that when referencing this library, it'll automatically download Textify, too. This is required for the Figlet component to work. We've also re-licensed this part of code as GNU GPL 3.0 or Later.

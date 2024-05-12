@@ -12,12 +12,14 @@
   * [👤 Name Generation](usage/how-to-use/name-generation.md)
   * [🖊️ Word Management](usage/how-to-use/word-management.md)
   * [👨‍🦽 Accessibility Tools](usage/how-to-use/accessibility-tools.md)
+  * [👑 Figlet Text](usage/how-to-use/figlet-text.md)
 * [⚒️ How it works](usage/how-it-works/README.md)
   * [☑️ Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)
   * [🕉️ Unicode Analyzer Internals](usage/how-it-works/unicode-analyzer-internals.md)
   * [🗓️ Semantic Versioning Internals](usage/how-it-works/semantic-versioning-internals.md)
   * [👥 Name Generation Internals](usage/how-it-works/name-generation-internals.md)
   * [🖋️ Word Selection Internals](usage/how-it-works/word-selection-internals.md)
+  * [👑 Figlet Text Internals](usage/how-it-works/figlet-text-internals.md)
 
 ***
 
