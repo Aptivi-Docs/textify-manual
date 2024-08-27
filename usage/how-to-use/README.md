@@ -55,7 +55,7 @@ You can use this syntax attribute in not only .NET 7.0+ apps, but you can also u
 When trying to use this attribute in .NET 7.0+ apps while using Textify, you'll notice this error message appearing in the error list:
 
 ```
-The type 'StringSyntaxAttribute' exists in both 'Textify, Version=1.9.0.1, Culture=neutral, PublicKeyToken=21c82ea14d2d7748' and 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+The type 'StringSyntaxAttribute' exists in both 'Textify, Version=x.x.x.x, Culture=neutral, PublicKeyToken=21c82ea14d2d7748' and 'System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 ```
 
 This is intentional, because Visual Studio only highlights the string based on context defined by this attribute when it is found in the `System.Diagnostics.CodeAnalysis` namespace.
@@ -73,3 +73,11 @@ After that, you should be able to use this attribute.
 If everything works properly, you should be able to see that parts of your string, such as regex in the below screenshot, are highlighted in different colors, and warnings should work, too.
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+## Unicode character width
+
+For applications that need to deal with the Unicode character width as in console cells, we've introduced this fine feature from Terminaux that allows you to query a Unicode character for its width, such as modifier characters that take up zero console cells (i.e. zero width characters), English letters that take up one cell (i.e. half-width characters), and Chinese characters that take up two cells (i.e. full-width characters).
+
+{% hint style="info" %}
+Please note that this information doesn't indicate the string length either by the amount of UTF-8 characters or by the text element as `StringInfo` class returns. This indicates how many console grid cells a character or a sentence consumes. For example, when an application tries to get the string length that contains zero-width or full-width characters, it doesn't indicate the number of cells, but the number of absolute characters, so Chinese characters are considered as one character that takes up two cells and Arabic modifier characters are considered as one character that takes up zero cells. If you want to measure the correct string length as how it would show up on a console, you should use this feature. The easiest way to use it is to rely on Terminaux's character extensions.
+{% endhint %}
