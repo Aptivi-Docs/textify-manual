@@ -73,3 +73,27 @@ Textify 1.9.x contains the following breaking changes that you must do in order 
 #### Moved Figletize to Textify.Figlet
 
 As part of the migration effort, we've decided to migrate Figletize and its assets to the Textify.Figlet library that you can download from NuGet. Please note that when referencing this library, it'll automatically download Textify, too. This is required for the Figlet component to work. We've also re-licensed this part of code as GNU GPL 3.0 or Later.
+
+## Textify 2.x
+
+During the development of the entire Textify 2.x series, we've made the following breaking changes:
+
+### Textify 1.2.x to 2.0.x
+
+Textify 2.0.x contains the following breaking changes that you must do in order for your applications to continue working:
+
+#### Textify.Data.Analysis and Textify.Figlet merged to Textify.Data
+
+We've moved all the code files from both the Textify.Data.Analysis and the Textify.Figlet package to the Textify.Data library in order to unify all data-related functions.
+
+{% hint style="info" %}
+Usually, you'll need to change the `using` clause to point to `Textify.Data`.
+{% endhint %}
+
+#### Textify.Json merged to Textify
+
+We've moved all the code files from the Textify.Json library to the main Textify library.
+
+{% hint style="info" %}
+Usually, you'll need to change the `using` clause to point to `Textify`.
+{% endhint %}

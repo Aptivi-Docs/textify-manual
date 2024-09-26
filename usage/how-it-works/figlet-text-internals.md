@@ -4,7 +4,7 @@ description: How does it work?
 
 # 👑 Figlet Text Internals
 
-Each time Textify.Figlet gets a Figlet font, if said font is already found in the list of cached fonts, it would return. Else, the font parser parses the font stream that contains the individual font properties, including the list of letters.
+Each time Textify gets a Figlet font, if said font is already found in the list of cached fonts, it would return. Else, the font parser parses the font stream that contains the individual font properties, including the list of letters.
 
 General specification about the `.flf` font files is available in the source code, and you can view it in the below link:
 

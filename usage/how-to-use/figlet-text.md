@@ -4,7 +4,7 @@ description: Figlet text makes your text look more awesome!
 
 # 👑 Figlet Text
 
-As part of Textify's Figlet library, you can write figlet text using one of the 550+ fonts provided with the library!
+As part of the main Textify library, you can write figlet text using one of the 550+ fonts provided with the library!
 
 ## How do you write Figlet text to the console?
 
