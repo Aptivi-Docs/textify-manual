@@ -1,8 +1,9 @@
 ---
 description: How does it work?
+icon: square-u
 ---
 
-# 🕉 Unicode Analyzer Internals
+# Unicode Analyzer Internals
 
 When one of the `QueryChar` functions gets called, it first caches the Unicode database from the library resources to the memory. As the library resources consist of ZIP files fetched from the Unicode UCD database which can be get, they're unpacked into memory.
 

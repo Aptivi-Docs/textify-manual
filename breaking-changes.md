@@ -1,8 +1,9 @@
 ---
 description: Changes that break the API
+icon: newspaper
 ---
 
-# 🗞️ Breaking changes
+# Breaking changes
 
 There are versions of Textify that may bring breaking changes with it. As a result, we'll have to list them to avoid being in the dark.
 

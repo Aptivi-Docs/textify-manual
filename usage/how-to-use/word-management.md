@@ -1,8 +1,9 @@
 ---
 description: Select a random word!
+icon: pen
 ---
 
-# 🖊️ Word Management
+# Word Management
 
 Using this function is very simple! Just use the `Textify.Words` namespace in any piece of code you want to use the function, as in: `using Textify.Data.Analysis.Words;`
 

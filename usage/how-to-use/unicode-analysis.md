@@ -1,8 +1,9 @@
 ---
 description: Any special characters?
+icon: square-u
 ---
 
-# 🀄 Unicode Analysis
+# Unicode Analysis
 
 Using this functionality that is available on Textify is very simple! Just use the `Textify.Unicode` namespace in any piece of code you want to use the library, as in: `using Textify.Data.Analysis.Unicode;`
 

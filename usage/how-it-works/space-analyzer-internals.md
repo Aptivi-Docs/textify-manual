@@ -1,8 +1,9 @@
 ---
 description: How does it work?
+icon: square-check
 ---
 
-# ☑ Space Analyzer Internals
+# Space Analyzer Internals
 
 Textify's space analyzer works by treating the string as if it's a stream to ensure greater efficiency for large strings. It also uses streams to handle large files.
 

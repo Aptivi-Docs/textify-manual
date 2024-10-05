@@ -1,8 +1,9 @@
 ---
 description: One version is enough to identify how old this work is!
+icon: calendar-range
 ---
 
-# 📅 Semantic Versioning
+# Semantic Versioning
 
 Using this function is very simple! Just use the `Textify.Versioning` namespace in any piece of code you want to use the function, as in: `using Textify.Versioning;`
 

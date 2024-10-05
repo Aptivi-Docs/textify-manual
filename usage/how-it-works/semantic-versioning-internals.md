@@ -1,8 +1,9 @@
 ---
 description: How does it work?
+icon: calendar-range
 ---
 
-# 🗓 Semantic Versioning Internals
+# Semantic Versioning Internals
 
 When `SemVer.Parse()` or `SemVer.ParseWithRev()` gets called with a semantic version string, it first checks the string against the SemVer compliance using the following regular expression (fetched from [this](https://semver.org/)). If it doesn't find any version element, such as the case of `1.0-1`, it returns an error.
 

@@ -1,8 +1,9 @@
 ---
 description: Accessibility tools for people with disabilities
+icon: wheelchair-move
 ---
 
-# 👨‍🦽 Accessibility Tools
+# Accessibility Tools
 
 Textify not only provides all the common text tools, but it also provides the accessibility tools for people with disabilities. This ensures that applications become usable for such people. The following tools have been implemented:
 

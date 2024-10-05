@@ -1,8 +1,9 @@
 ---
 description: Welcome to Textify!
+icon: hand-wave
 ---
 
-# 👋 Welcome
+# Welcome
 
 Welcome to Textify! It's a C# library that allows you to manipulate with text in an efficient way. It not only provides you with text manipulation tools, but it also provides you with text analysis tools and VT sequence tools.
 

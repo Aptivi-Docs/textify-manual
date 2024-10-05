@@ -1,8 +1,9 @@
 ---
 description: Figlet text makes your text look more awesome!
+icon: crown
 ---
 
-# 👑 Figlet Text
+# Figlet Text
 
 As part of the main Textify library, you can write figlet text using one of the 550+ fonts provided with the library!
 

@@ -1,8 +1,9 @@
 ---
 description: Analyzing spaces in your text...
+icon: square-check
 ---
 
-# ✅ Space Analysis and Correction
+# Space Analysis and Correction
 
 Textify provides two essential tools:
 

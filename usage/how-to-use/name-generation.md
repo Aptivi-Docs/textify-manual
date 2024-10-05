@@ -1,8 +1,9 @@
 ---
 description: Get a random name!
+icon: square-user
 ---
 
-# 👤 Name Generation
+# Name Generation
 
 Using this function is very simple! Just use the `Textify.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.Data.Analysis.NameGen;`
 
