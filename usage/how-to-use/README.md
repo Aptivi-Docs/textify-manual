@@ -1,6 +1,6 @@
 ---
-description: How do I use this library?
 icon: computer
+description: How do I use this library?
 ---
 
 # How to use
@@ -25,6 +25,10 @@ The following features are available in `Textify.Data`:
 [figlet-text.md](figlet-text.md)
 {% endcontent-ref %}
 
+{% content-ref url="emoji-management.md" %}
+[emoji-management.md](emoji-management.md)
+{% endcontent-ref %}
+
 The following features are available in the base Textify library:
 
 {% content-ref url="space-analysis-and-correction.md" %}
@@ -37,6 +41,10 @@ The following features are available in the base Textify library:
 
 {% content-ref url="accessibility-tools.md" %}
 [accessibility-tools.md](accessibility-tools.md)
+{% endcontent-ref %}
+
+{% content-ref url="wide-characters.md" %}
+[wide-characters.md](wide-characters.md)
 {% endcontent-ref %}
 
 For general usage of the text manipulation library, you can use the `TextTools` class to get access to various string manipulators. This class is found in the `Textify.General` namespace. Additionally, the JSON tools can be found in the `JsonTools` class to get access to various JSON tools, such as getting a difference between two JSON objects.

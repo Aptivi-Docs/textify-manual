@@ -13,6 +13,8 @@
   * [Word Management](usage/how-to-use/word-management.md)
   * [Accessibility Tools](usage/how-to-use/accessibility-tools.md)
   * [Figlet Text](usage/how-to-use/figlet-text.md)
+  * [Emoji Management](usage/how-to-use/emoji-management.md)
+  * [Wide Characters](usage/how-to-use/wide-characters.md)
 * [How it works](usage/how-it-works/README.md)
   * [Space Analyzer Internals](usage/how-it-works/space-analyzer-internals.md)
   * [Unicode Analyzer Internals](usage/how-it-works/unicode-analyzer-internals.md)
