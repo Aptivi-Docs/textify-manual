@@ -12,6 +12,7 @@
   * [Extra Features](usage/how-to-use/extra-features/README.md)
     * [Space Analysis and Correction](usage/how-to-use/extra-features/space-analysis-and-correction.md)
     * [Unicode Analysis](usage/how-to-use/extra-features/unicode-analysis.md)
+    * [Unicode Tools](usage/how-to-use/extra-features/unicode-tools.md)
     * [Semantic Versioning](usage/how-to-use/extra-features/semantic-versioning.md)
     * [Name Generation](usage/how-to-use/extra-features/name-generation.md)
     * [Word Management](usage/how-to-use/extra-features/word-management.md)
