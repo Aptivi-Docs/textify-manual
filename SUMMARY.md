@@ -30,6 +30,6 @@
 
 ***
 
-* [Report an issue](https://github.com/Aptivi/Textify/issues/new)
-* [Source code](https://github.com/Aptivi/Textify/)
+* [Report an issue](https://gitlab.com/aptivi/main/Textify/-/issues)
+* [Source code](https://gitlab.com/aptivi/main/Textify)
 * [API Reference](https://aptivi.github.io/Textify/)
