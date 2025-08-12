@@ -1,6 +1,6 @@
 ---
-icon: text-size
 description: Extensions that manipulate with text
+icon: text-size
 ---
 
 # Text Manipulation
@@ -21,17 +21,24 @@ The below tools allow you to get the width of a character.
 public static int GetCharWidth(int c)
 ```
 
-This uses the Unicode width database that Textify maintains internally to be able to determine whether a character use one, two, or zero cells. Some of the characters are either assigned as ambiguous, are private use characters, or unassigned characters, and their handling can be controlled by the following properties:
+This uses the Unicode width database that Textify maintains internally to be able to determine whether a character use one, two, or zero cells. Some of the characters are assigned as unassigned characters, and their handling can be controlled by the following properties:
 
 ```csharp
 public static bool UseTwoCellsForUnassignedChars { get; set; }
-public static bool UseTwoCellsForAmbiguousChars { get; set; }
-public static bool UseTwoCellsForPrivateChars { get; set; }
 ```
 
 {% hint style="info" %}
 This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
 {% endhint %}
+
+{% code title="Example" lineNumbers="true" %}
+```
+'\u001A' -> 0
+'A' -> 1
+'*' -> 1
+'你' -> 2
+```
+{% endcode %}
 
 #### `GetCharWidthType()`
 
@@ -41,13 +48,21 @@ public static CharWidthType GetCharWidthType(int c)
 
 This function allows you to easily get the character width type from a specified Unicode character codepoint. This will return one of the following types:
 
-* Private
+* Formatting
 * NonPrinting
 * Combining
 * DoubleWidth
-* Ambiguous
 * Emoji
 * Unassigned
+
+{% code title="Example" lineNumbers="true" %}
+```
+'\u001A' -> NonPrinting
+'A' -> -1
+'*' -> -1
+'你' -> DoubleWidth
+```
+{% endcode %}
 
 ### Wrapped sentence tools
 
@@ -382,7 +397,8 @@ These functions allow you to add either a prefix or a suffix to the string, resp
   * Adding prefixes with checking: `Hello` with `str` as prefix becomes `strHello`, and `strHello` with `str` as prefix becomes `strHello`.
   * Adding prefixes without checking: `Hello` with `str` as prefix becomes `strHello`, and `strHello` with `str` as prefix becomes `strstrHello`.
 * Suffixes
-  * Adding suffixes with checking:&#x20;
+  * Adding suffixes with checking: `Hello` with `str` as suffix becomes `Hellostr`, and `Hellostr` with `str` as suffix becomes `Hellostr`.
+  * Adding suffixes without checking: `Hello` with `str` as suffix becomes `Hellostr`, and `Hellostr` with `str` as suffix becomes `Hellostrstr`.
 
 {% hint style="info" %}
 If you want to turn automatic checking off, you can set the `check` argument value to `false`.
@@ -397,6 +413,9 @@ public static string RemoveSuffix(this string text, string suffix)
 
 These functions allow you to remove either a prefix or a suffix to the string, respectively. This operation checks to see if the string already starts with a prefix or ends with a suffix.
 
+* Prefixes: `strHello` with `str` as prefix becomes `Hello`.
+* Suffixes: `Hellostr` with `str` as suffix becomes `Hello`.
+
 #### `VerifyPrefix()` and `VerifySuffix()`
 
 ```csharp
@@ -406,8 +425,8 @@ public static bool VerifySuffix(this string text, string suffix, StringCompariso
 
 These functions allow you to verify a prefix and a suffix within a string by comparing the following:
 
-* Prefix at the beginning of the string
-* Suffix at the end of the string
+* Prefix at the beginning of the string: Testing `strHello` with `str` as prefix returns `true`, and with `Hello` as prefix returns `false`.
+* Suffix at the end of the string: Testing `Hellostr` with `str` as suffix returns `true`, and with `Hello` as suffix returns `false`.
 
 {% hint style="info" %}
 Currently, this comparison is case-sensitive according to your current culture settings determined by your operating system. However, the `comparison` argument lets you control case-sensitivity and culture-specific settings. For instance, you can make use of `OrdinalIgnoreCase` to verify the prefix or the suffix ordinally without checking for case sensitivity.
@@ -425,6 +444,8 @@ public static string GetBase64Encoded(this string text)
 
 This encodes a specified string and returns a BASE64 encoded string that can be decoded.
 
+* For example, `Nitrocid KS` is converted to `Tml0cm9jaWQgS1M=`.
+
 #### `GetBase64Decoded()`
 
 ```csharp
@@ -432,6 +453,8 @@ public static string GetBase64Decoded(this string text)
 ```
 
 This decodes a specified BASE64 string and returns a decoded string that can be encoded.
+
+For example, `Tml0cm9jaWQgS1M=` is converted to Nitrocid KS.&#x20;
 
 ### Casing tools
 
@@ -445,6 +468,9 @@ public static string LowerFirst(this string target)
 ```
 
 This allows you to make the first character in a string upper case or lower case.
+
+* `UpperFirst()`: `hello` becomes `Hello`
+* `LowerFirst()`: `Hello` becomes `hello`
 
 #### `ToTitleCase()`
 
@@ -462,6 +488,8 @@ This function allows you to change the casing of all words in a string except th
 * on
 * to
 * from
+
+For example, calling this function on the string `"Reconnecting your network to the work connection..."` becomes `"Reconnecting Your Network to the Work Connection..."`
 
 ### Escape tools
 
@@ -481,6 +509,9 @@ public static string Escape(this string target)
 
 This function allows you to escape some of the illegal characters for string parsing.
 
+* `"Hello world!"` -> `"Hello\ world\!"`
+* `"Helloworld"` -> `"Helloworld"`
+
 #### `Unescape()`
 
 ```csharp
@@ -488,6 +519,9 @@ public static string Unescape(this string target)
 ```
 
 This function allows you to unescape some of the illegal characters for human readability.
+
+* `"Hello\ world\!"` -> `"Hello world!"`
+* `"Helloworld"` -> `"Helloworld"`
 
 ### Letter repetition tools
 
@@ -501,6 +535,10 @@ public static int GetLetterRepetitionPattern(this string target, int steps)
 
 This function allows you to get a number that represents a letter repetition pattern (LRP) that determines how many times a program needs to step `n` characters, which is specified in the `steps` parameter, before the final step round reaches the end of the string.
 
+* `Hello!` with 3 LRP steps returns 2 rounds
+* `Hello` with 7 LRP steps returns 5 rounds
+* `Hello` with 5 LRP steps returns 1 round
+
 #### `GetLetterRepetitionPatternTable()`
 
 ```csharp
@@ -512,6 +550,8 @@ These functions allow you to get a read-only dictionary that represents a number
 
 * The first function overload allows you to specify either a single iteration or double iterations.
 * The second function overload allows you to specify a number of iterations.
+
+For example, a string with the length of 6 returns a dictionary consisting of the following values: `{ 1, 6 }, { 2, 3 }, { 3, 2 }, { 4, 3 }, { 5, 6 }, { 6, 1 }`
 
 #### `GetListOfRepeatedLetters()`
 
@@ -527,6 +567,13 @@ This allows you to get a list of repeated letters in a read-only dictionary form
 {% hint style="info" %}
 By default, this function populates characters that are only populated once. If you're not interested in this detail, you can remove them by passing the `removeSingle` argument as `true`.
 {% endhint %}
+
+For example, a list of repeated letters in the `Hello!` string becomes:
+
+* With single letter occurrences:
+  * `{ 'H', 1 }, { 'e', 1 }, { 'l', 2 }, { 'o', 1 }, { '!', 1 }`
+* WIthout single letter occurrences:
+  * `{ 'l', 2 }`
 
 ### Logical comparsion tools
 
@@ -570,6 +617,9 @@ public static bool EqualsNoCase(this string source, string target, StringCompari
 
 This function allows you to test string equality easily without checking for case sensitivity.
 
+* Comparing `Hello` against `Hello` returns true
+* Comparing `Hello` against `HELLO` returns true
+
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
 
@@ -585,6 +635,9 @@ public static bool EqualsCase(this string source, string target, StringCompariso
 ```
 
 This function allows you to test string equality easily while checking for case sensitivity.
+
+* Comparing `Hello` against `Hello` returns true
+* Comparing `Hello` against `HELLO` returns false
 
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
@@ -602,6 +655,9 @@ public static bool StartsWithNoCase(this string source, string target, StringCom
 
 This function allows you to test string prefix easily without checking for case sensitivity.
 
+* Testing `Hello` with `He` returns true
+* Testing `Hello` with `HE` returns true
+
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
 
@@ -617,6 +673,9 @@ public static bool StartsWithCase(this string source, string target, StringCompa
 ```
 
 This function allows you to test string prefix easily while checking for case sensitivity.
+
+* Testing `Hello` with `He` returns true
+* Testing `Hello` with `HE` returns false
 
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
@@ -634,6 +693,9 @@ public static bool EndsWithNoCase(this string source, string target, StringCompa
 
 This function allows you to test string suffix easily without checking for case sensitivity.
 
+* Testing `Hello` with `lo` returns true
+* Testing `Hello` with `Lo` returns true
+
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
 
@@ -650,6 +712,9 @@ public static bool EndsWithCase(this string source, string target, StringCompari
 
 This function allows you to test string suffix easily while checking for case sensitivity.
 
+* Testing `Hello` with `lo` returns true
+* Testing `Hello` with `Lo` returns false
+
 {% hint style="info" %}
 The comparison argument must be supplied with one of the following comparison options:
 
@@ -665,6 +730,9 @@ public static bool ContainsWithNoCase(this string source, string target)
 ```
 
 This function allows you to check a substring without checking for case sensitivity.
+
+* Testing `Hello` with `lo` returns true
+* Testing `Hello` with `Lo` returns true
 
 ### Wide character and string tools
 
@@ -701,8 +769,10 @@ public static string TruncateString(this string target, int threshold)
 
 This function allows you to truncate a string into a specified string length. This helps in situations where wrapping is not possible or the user needs a truncated string.
 
+* `Nitrocid is awesome and is great!` with the truncation threshold of `20`: `Nitrocid is awesome ...`
+
 {% hint style="info" %}
-This function also found in Terminaux, though they also employ VT sequence support to help process them. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
+This function is also found in Terminaux, though they also employ VT sequence support to help process them. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
 {% endhint %}
 
 #### `Reverse()`
@@ -751,6 +821,10 @@ public static string ReadNullTerminatedString(this string source, int offset)
 
 This function allows you to read a null-terminated string, optionally chopping the source string starting from `offset` index.
 
+* `Hello\0Goodbye` with offset 3 becomes `lo`
+* `Hello\0Goodbye` with offset 5 becomes an empty string
+* `Hello\0Goodbye` with offset 6 becomes `Goodbye`
+
 #### `IsPalindrome()`
 
 ```csharp
@@ -774,6 +848,10 @@ public static (char high, char low) BreakSurrogates(this string source)
 ```
 
 This function allows you to break a string that consists of high surrogate and low surrogate characters into their individual character representations of the surrogates.
+
+* `\U0001F607` becomes `('\ud83d', '\ude07')`
+* `\U0001F923` becomes `('\ud83e', '\udd23')`
+* `\U0001FAE1` becomes `('\ud83e', '\udee1')`
 
 ## Character manipulation
 

@@ -20,6 +20,10 @@ public static bool IsValidRegex(Regex pattern)
 
 This function lets you determine whether the specified regular expression pattern contains a valid syntax. This is useful for easy verification of the regex pattern syntax to ensure that you can control the situation where the user code tried to provide invalid regular expression pattern. The `Regex` class by default doesn't validate the syntax until you attempt to match a string with it, so we've made a wrapper to simplify things by testing a specified pattern against an empty string.
 
+* `^[\w.-]+$` returns `true`
+* `^[\w.-"]+$` returns `false`
+* Empty regexes also return `true`
+
 ### `ParseRegex()` and `TryParseRegex()`
 
 ```csharp
@@ -31,6 +35,40 @@ These two functions allow you to parse a regular expression, returning an instan
 
 * `ParseRegex()` throws an exception when an invalid regular expression syntax is detected.
 * `TryParseRegex()` returns a boolean indicating that either the operation succeeded (`true`) or failed (`false`). When the operation fails, the resulting value is `null`.
+
+### `IsMatch()`, `Match()`, and `Matches()`
+
+```csharp
+public static bool IsMatch(string text, string pattern)
+public static Match Match(string text, string pattern)
+public static MatchCollection Matches(string text, string pattern)
+```
+
+These three functions allow you to check to see if the regular expression engine finds matches in the provided regular expression pattern tested against the text.
+
+* `IsMatch()` returns `true` if there is a match; otherwise, `false`.
+* `Match()` returns the first match is there is a match.
+* `Matches()` returns all matches that are found.
+
+### `Filter()`
+
+```csharp
+public static string Filter(string text, string pattern)
+public static string Filter(string text, string pattern, string replaceWith)
+```
+
+The above functions allow you to replace all matches in the text with either the replacement string or the empty string.
+
+* The first function overload replaces all matches with an empty string
+* The second function overload replaces all matches with the provided replacement string
+
+### `Split()`
+
+```csharp
+public static string[] Split(string text, string pattern)
+```
+
+The above function allows you to split the text using the regular expression pattern matches as the delimiter.
 
 ## String syntax attribute
 
