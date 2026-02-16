@@ -7,7 +7,25 @@ icon: crown
 
 As part of the main Textify library, you can write figlet text using one of the 550+ fonts provided with the library!
 
-## How do you write Figlet text to the console?
+***
+
+## <mark style="color:$primary;">Usage</mark>
+
+You can use the Figlet tools using the `FigletTools` class in the `Textify.Data.Figlet` namespace.
+
+<details>
+
+<summary>Available functions</summary>
+
+You can use one of the following functions:
+
+<table><thead><tr><th width="170.333251953125">Function</th><th>Description</th></tr></thead><tbody><tr><td><code>GetByName()</code></td><td>Gets a Figlet font instance from name</td></tr><tr><td><code>TryGetByName()</code></td><td>Tries to get the Figlet font instance from name</td></tr><tr><td><code>GetFigletFonts()</code></td><td>Gets a list of supported Figlet fonts and their instances</td></tr><tr><td><code>GetFigletFont()</code></td><td>Gets a Figlet font instance from name but with fallback to <code>small</code> if the font is not found</td></tr></tbody></table>
+
+</details>
+
+<details>
+
+<summary>Example of printing Figlet text to the console using <code>FigletTools</code></summary>
 
 This feature is easy to use. Just call the `Console.WriteLine()` function with `FigletTools.RenderFiglet()`, passing the text and the figlet font name (case sensitive):
 
@@ -16,15 +34,18 @@ string figletText = FigletTools.RenderFiglet("Hello!", "banner");
 Console.WriteLine(figletText);
 ```
 
-Additionally, you can get the Figlet font instance using one of the following `FigletFonts` functions, passing the font name (lowercase) to the first argument:
+</details>
 
-* `GetByName()`
-* `TryGetByName()`
+<details>
+
+<summary>Example of printing Figlet text to the console using the font instance</summary>
+
+You can get the Figlet font instance using a function that we've mentioned earlier.
 
 After you get the instance, you can call the `Render()` function on it, passing the text as the first argument.
 
 ```csharp
-var fontInstance = FigletizeFonts.TryGetByName(fontName);
+var fontInstance = FigletTools.TryGetByName(fontName);
 if (fontInstance is null)
 {
     Console.Error.WriteLine($"Font {fontName} not found. Exiting...");
@@ -34,8 +55,4 @@ string rendered = fontInstance.Render(message);
 Console.WriteLine(rendered);
 ```
 
-### Other ways
-
-Additionally, you can use the `FigletTools` class to get a list of supported Figlet fonts and their instances using the `GetFigletFonts()` function.
-
-`GetFigletFont()` also does the same as `GetByName()`, except that it uses the fallback font, `small`, when the font is not found.
+</details>

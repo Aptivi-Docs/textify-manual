@@ -5,20 +5,18 @@ icon: text-size
 
 # Text Manipulation
 
-Textify has a main goal of providing you with text extensions that allow you to perform various operations on a string, and they will be listed individually in this page to have a quick overview of what each function does.
+Text tools can be found in the `TextTools` class under the `Textify.General` namespace. They make it easier for you to manipulate with strings.
 
-## Text tools
-
-Text tools can be found in the `TextTools` class under the `Textify.Global` namespace. They make it easier for you to manipulate with strings.
-
-### Character width tools
+### <mark style="color:$primary;">Character width tools</mark>
 
 The below tools allow you to get the width of a character.
 
-#### `GetCharWidth()`
+<details>
+
+<summary><code>GetCharWidth()</code></summary>
 
 ```csharp
-public static int GetCharWidth(int c)
+public static int GetCharWidth(int c) { }
 ```
 
 This uses the Unicode width database that Textify maintains internally to be able to determine whether a character use one, two, or zero cells. Some of the characters are assigned as unassigned characters, and their handling can be controlled by the following properties:
@@ -40,10 +38,14 @@ This is primarily used for console operations, and is a good start to implement 
 ```
 {% endcode %}
 
-#### `GetCharWidthType()`
+</details>
+
+<details>
+
+<summary><code>GetCharWidthType()</code></summary>
 
 ```csharp
-public static CharWidthType GetCharWidthType(int c)
+public static CharWidthType GetCharWidthType(int c) { }
 ```
 
 This function allows you to easily get the character width type from a specified Unicode character codepoint. This will return one of the following types:
@@ -64,19 +66,19 @@ This function allows you to easily get the character width type from a specified
 ```
 {% endcode %}
 
-### Wrapped sentence tools
+</details>
+
+### <mark style="color:$primary;">Wrapped sentence tools</mark>
 
 The following functions allow you to wrap a long string into a specified length, both character-wise and word-wise.
 
-{% hint style="info" %}
-The below functions are also found in Terminaux, though they also employ VT sequence support to help process them. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
-{% endhint %}
+<details>
 
-#### `GetWrappedSentences()`
+<summary><code>GetWrappedSentences()</code></summary>
 
 ```csharp
-public static string[] GetWrappedSentences(this string text, int maximumLength)
-public static string[] GetWrappedSentences(this string text, int maximumLength, int indentLength)
+public static string[] GetWrappedSentences(this string text, int maximumLength) { }
+public static string[] GetWrappedSentences(this string text, int maximumLength, int indentLength) { }
 ```
 
 This function allows you to wrap a long string into a list of strings that represent resultant lines. These lines correspond wrapped sentences by a specified length, and only wraps by the amount of characters. In addition to that, you can also specify an indentation length for the first line of the wrapped sentence.
@@ -89,11 +91,19 @@ This function allows you to wrap a long string into a list of strings that repre
   * `troc`
   * `id`
 
-#### `GetWrappedSentencesByWords()`
+{% hint style="info" %}
+This function is also found in Terminaux, though it also employs VT sequence support to help process the text. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary><code>GetWrappedSentencesByWords()</code></summary>
 
 ```csharp
-public static string[] GetWrappedSentencesByWords(this string text, int maximumLength)
-public static string[] GetWrappedSentencesByWords(this string text, int maximumLength, int indentLength)
+public static string[] GetWrappedSentencesByWords(this string text, int maximumLength) { }
+public static string[] GetWrappedSentencesByWords(this string text, int maximumLength, int indentLength) { }
 ```
 
 This function allows you to wrap a long string into a list of strings that represent resultant lines. These lines correspond wrapped sentences by a specified length, but also takes words into account, like word processors, for readability. In addition to that, you can also specify an indentation length for the first line of the wrapped sentence.
@@ -114,22 +124,28 @@ This function allows you to wrap a long string into a list of strings that repre
   * `el`
   * `sim`
 
-### Double quote tools
+{% hint style="info" %}
+This function is also found in Terminaux, though it also employs VT sequence support to help process the text. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
+{% endhint %}
+
+</details>
+
+### <mark style="color:$primary;">Double quote tools</mark>
 
 The following functions manipulate with the double quotation in the string.
 
-#### `SplitEncloseDoubleQuotes()`
+<details>
+
+<summary><code>SplitEncloseDoubleQuotes()</code></summary>
 
 ```csharp
-public static string[] SplitEncloseDoubleQuotes(this string target)
-public static string[] SplitEncloseDoubleQuotes(this string target, char[]? partialQuoteSplitChars = null)
-public static string[] SplitEncloseDoubleQuotes(this string target, char match = ' ', char[]? partialQuoteSplitChars = null)
-public static string[] SplitEncloseDoubleQuotes(this string target, Func<char, bool> condition, char[]? partialQuoteSplitChars = null)
+public static string[] SplitEncloseDoubleQuotes(this string target) { }
+public static string[] SplitEncloseDoubleQuotes(this string target, char[]? partialQuoteSplitChars = null) { }
+public static string[] SplitEncloseDoubleQuotes(this string target, char match = ' ', char[]? partialQuoteSplitChars = null) { }
+public static string[] SplitEncloseDoubleQuotes(this string target, Func<char, bool> condition, char[]? partialQuoteSplitChars = null) { }
 ```
 
 This function splits a string with either a new line, a specific character, or a character condition, with support for splitting with double quotation marks (single quote, double quote, or backticks), while releasing the quotation marks that surround the string.
-
-_The primary reason was that because we were uncomfortable with the usage of `Microsoft.VisualBasic` in C# applications as we were migrating to C# for Nitrocid KS in 2022._
 
 * A string, `First "Second Third" Fourth`, will be split like this:
   * `First`
@@ -140,18 +156,20 @@ _The primary reason was that because we were uncomfortable with the usage of `Mi
 Partial quote split characters can also be specified, but you'll need to be aware of the implications when using it, so it's best not to specify unless you're dealing with a very specific string.
 {% endhint %}
 
-#### `SplitEncloseDoubleQuotesNoRelease()`
+</details>
+
+<details>
+
+<summary><code>SplitEncloseDoubleQuotesNoRelease()</code></summary>
 
 ```csharp
-public static string[] SplitEncloseDoubleQuotesNoRelease(this string target)
-public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, char[]? partialQuoteSplitChars = null)
-public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, char match = ' ', char[]? partialQuoteSplitChars = null)
-public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, Func<char, bool> condition, char[]? partialQuoteSplitChars = null)
+public static string[] SplitEncloseDoubleQuotesNoRelease(this string target) { }
+public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, char[]? partialQuoteSplitChars = null) { }
+public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, char match = ' ', char[]? partialQuoteSplitChars = null) { }
+public static string[] SplitEncloseDoubleQuotesNoRelease(this string target, Func<char, bool> condition, char[]? partialQuoteSplitChars = null) { }
 ```
 
 This function splits a string with either a new line, a specific character, or a character condition, with support for splitting with double quotation marks (single quote, double quote, or backticks), without releasing the quotation marks that surround the string.
-
-_The primary reason was that because we were uncomfortable with the usage of `Microsoft.VisualBasic` in C# applications as we were migrating to C# for Nitrocid KS in 2022._
 
 A string, `First "Second Third" Fourth`, will be split like this:
 
@@ -163,7 +181,11 @@ A string, `First "Second Third" Fourth`, will be split like this:
 Partial quote split characters can also be specified, but you'll need to be aware of the implications when using it, so it's best not to specify unless you're dealing with a very specific string.
 {% endhint %}
 
-#### `ReleaseDoubleQuotes()`
+</details>
+
+<details>
+
+<summary><code>ReleaseDoubleQuotes()</code></summary>
 
 ```csharp
 public static string ReleaseDoubleQuotes(this string target)
@@ -175,7 +197,11 @@ This function allows you to remove surrounding double quotes from the beginning 
 * `'Single quotes'` -> `Single quotes`
 * `` `Backticks` `` -> `Backticks`
 
-#### `GetEnclosedDoubleQuotesType()`
+</details>
+
+<details>
+
+<summary><code>GetEnclosedDoubleQuotesType()</code></summary>
 
 ```csharp
 public static EnclosedDoubleQuotesType GetEnclosedDoubleQuotesType(this string target)
@@ -188,14 +214,18 @@ This function allows you to determine the type of the double quotation that is f
 * `` `Backticks` `` -> `EnclosedDoubleQuotesType.Backticks`
 * `Normal` -> `EnclosedDoubleQuotesType.None`
 
-### New line tools
+</details>
+
+### <mark style="color:$primary;">New line tools</mark>
 
 The following functions manipulate with the new lines in the string.
 
-#### `SplitNewLines()`
+<details>
+
+<summary><code>SplitNewLines()</code></summary>
 
 ```csharp
-public static string[] SplitNewLines(this string target, bool emptyStrings = true)
+public static string[] SplitNewLines(this string target, bool emptyStrings = true) { }
 ```
 
 This function allows you to easily split the string by new lines. You can optionally exclude empty lines by setting `emptyStrings` to `false`. This is platform-agnostic so that you don't have to specify what kind of new line you're splitting with.
@@ -205,10 +235,14 @@ This function allows you to easily split the string by new lines. You can option
   * `Second`
   * `Third`
 
-#### `UnixifyNewLines()`
+</details>
+
+<details>
+
+<summary><code>UnixifyNewLines()</code></summary>
 
 ```csharp
-public static string UnixifyNewLines(this string target)
+public static string UnixifyNewLines(this string target) { }
 ```
 
 This function allows you to normalize the new line characters to convert them to Unix-based newlines (`LF`). This supports common and uncommon new line characters, such as `CR` + `LF` for Windows, `CR` for Mac OS 9, and others. This conforms to the Unicode standards.
@@ -216,17 +250,21 @@ This function allows you to normalize the new line characters to convert them to
 * `"First\r\nSecond\r\nThird"` -> `"First\nSecond\nThird"`
 * `"First\rSecond\rThird"` -> `"First\nSecond\nThird"`
 
-### Starts, Ends, and Contains tools
+</details>
+
+### <mark style="color:$primary;">Starts, Ends, and Contains tools</mark>
 
 The following functions allow you to perform different kinds of beginning, ending, and substring detection in the string.
 
-#### `StartsWithAnyOf()` and `StartsWithAllOf()`
+<details>
+
+<summary><code>StartsWithAnyOf()</code> and <code>StartsWithAllOf()</code></summary>
 
 ```csharp
-public static bool StartsWithAnyOf(this string target, string[] values)
-public static bool StartsWithAllOf(this string source, string[] values)
-public static bool StartsWithAnyOf(this string target, char[] values)
-public static bool StartsWithAllOf(this string source, char[] values)
+public static bool StartsWithAnyOf(this string target, string[] values) { }
+public static bool StartsWithAllOf(this string source, string[] values) { }
+public static bool StartsWithAnyOf(this string target, char[] values) { }
+public static bool StartsWithAllOf(this string source, char[] values) { }
 ```
 
 This checks the string for a list of prefixes in the OR and the AND logical condition, respectively.
@@ -236,13 +274,17 @@ This checks the string for a list of prefixes in the OR and the AND logical cond
 * `StartsWithAllOf()` checks to see if all of the prefixes is found within the beginning of the string.
   * For example, this string `"dotnet-hostfxr-8.0"` returns `true` if all of `"dotnet-"` and `"dotnet-hostfxr-"` prefixes match, but returns `false` if one of the prefixes don't match, such as `"dotnet-runtime-8.0"`.
 
-#### `EndsWithAnyOf()` and `EndsWithAllOf()`
+</details>
+
+<details>
+
+<summary><code>EndsWithAnyOf()</code> and <code>EndsWithAllOf()</code></summary>
 
 ```csharp
-public static bool EndsWithAnyOf(this string target, string[] values)
-public static bool EndsWithAllOf(this string source, string[] values)
-public static bool EndsWithAnyOf(this string source, char[] values)
-public static bool EndsWithAllOf(this string source, char[] values)
+public static bool EndsWithAnyOf(this string target, string[] values) { }
+public static bool EndsWithAllOf(this string source, string[] values) { }
+public static bool EndsWithAnyOf(this string source, char[] values) { }
+public static bool EndsWithAllOf(this string source, char[] values) { }
 ```
 
 This checks the string for a list of suffixes in the OR and the AND logical condition, respectively.
@@ -252,13 +294,17 @@ This checks the string for a list of suffixes in the OR and the AND logical cond
 * `EndsWithAllOf()` checks to see if all of the suffixes is found within the ending of the string.
   * For example, this string `"Release-5.0-OOB"` returns `true` if both the `"-OOB"` and the `"-5.0-OOB"` suffixes match, but returns `false` if one of the suffixes doesn't match, for example, `"Release-4.6-OOB"`.
 
-`ContainsAnyOf()` and `ContainsAllOf()`
+</details>
+
+<details>
+
+<summary><code>ContainsAnyOf()</code> and <code>ContainsAllOf()</code></summary>
 
 ```csharp
-public static bool ContainsAnyOf(this string source, string[] targets)
-public static bool ContainsAllOf(this string source, string[] targets)
-public static bool ContainsAnyOf(this string source, char[] targets)
-public static bool ContainsAllOf(this string source, char[] targets)
+public static bool ContainsAnyOf(this string source, string[] targets) { }
+public static bool ContainsAllOf(this string source, string[] targets) { }
+public static bool ContainsAnyOf(this string source, char[] targets) { }
+public static bool ContainsAllOf(this string source, char[] targets) { }
 ```
 
 This checks the string for a list of substrings in the OR and the AND logical condition, respectively.
@@ -268,17 +314,21 @@ This checks the string for a list of substrings in the OR and the AND logical co
 * `ContainsAllOf()` checks to see if all of the substrings is found within the string.
   * For example, this string `"Branch-Prod-5.0"` returns `true` if both the `"Prod"` and the `"Branch"` substrings match, but returns `false` if one of the substrings doesn't match, for example, `"Branch-Staging-5.0"`.
 
-### Replacement tools
+</details>
+
+### <mark style="color:$primary;">Replacement tools</mark>
 
 The following functions allow you to perform replacement operations on a string.
 
-#### `ReplaceAll()`
+<details>
+
+<summary><code>ReplaceAll()</code></summary>
 
 ```csharp
-public static string ReplaceAll(this string target, string[] toBeReplaced, string toReplace)
-public static string ReplaceAll(this string target, string[] toBeReplaced, char toReplace)
-public static string ReplaceAll(this string target, char[] toBeReplaced, string toReplace)
-public static string ReplaceAll(this string target, char[] toBeReplaced, char toReplace)
+public static string ReplaceAll(this string target, string[] toBeReplaced, string toReplace) { }
+public static string ReplaceAll(this string target, string[] toBeReplaced, char toReplace) { }
+public static string ReplaceAll(this string target, char[] toBeReplaced, string toReplace) { }
+public static string ReplaceAll(this string target, char[] toBeReplaced, char toReplace) { }
 ```
 
 This function allows you to perform a replacement of a list of specified characters or substrings with either a single string or a single character that will be used for replacement.
@@ -287,13 +337,17 @@ This function allows you to perform a replacement of a list of specified charact
 * Replacement string to replace `<replace>` and `<replace2>`: `test`
 * Result: `Please test Nitrocid. This sub is a unit test.`
 
-#### `ReplaceAllRange()`
+</details>
+
+<details>
+
+<summary><code>ReplaceAllRange()</code></summary>
 
 ```csharp
-public static string ReplaceAllRange(this string target, string[] toBeReplaced, string[] toReplace)
-public static string ReplaceAllRange(this string target, string[] toBeReplaced, char[] toReplace)
-public static string ReplaceAllRange(this string target, char[] toBeReplaced, string[] toReplace)
-public static string ReplaceAllRange(this string target, char[] toBeReplaced, char[] toReplace)
+public static string ReplaceAllRange(this string target, string[] toBeReplaced, string[] toReplace) { }
+public static string ReplaceAllRange(this string target, string[] toBeReplaced, char[] toReplace) { }
+public static string ReplaceAllRange(this string target, char[] toBeReplaced, string[] toReplace) { }
+public static string ReplaceAllRange(this string target, char[] toBeReplaced, char[] toReplace) { }
 ```
 
 This function allows you to perform a replacement of a list of specified characters or substrings with either a list of strings or characters that will be used for replacement. This is a bulk replacement.
@@ -306,13 +360,17 @@ This function allows you to perform a replacement of a list of specified charact
 In order for this to work, the length of both the replacement source array and the target array must be at the same length.
 {% endhint %}
 
-#### `ReplaceLastOccurrence()`
+</details>
+
+<details>
+
+<summary><code>ReplaceLastOccurrence()</code></summary>
 
 ```csharp
-public static string ReplaceLastOccurrence(this string source, string searchText, string replace)
-public static string ReplaceLastOccurrence(this string source, string searchText, char replace)
-public static string ReplaceLastOccurrence(this string source, char searchText, string replace)
-public static string ReplaceLastOccurrence(this string source, char searchText, char replace)
+public static string ReplaceLastOccurrence(this string source, string searchText, string replace) { }
+public static string ReplaceLastOccurrence(this string source, string searchText, char replace) { }
+public static string ReplaceLastOccurrence(this string source, char searchText, string replace) { }
+public static string ReplaceLastOccurrence(this string source, char searchText, char replace) { }
 ```
 
 This function allows you to replace the last occurrence of either a character or a substring with the target replacement character or substring.
@@ -321,10 +379,14 @@ This function allows you to replace the last occurrence of either a character or
 * Replacement string to replace the last `is`: `its features are`
 * Result: `Nitrocid is awesome and its features are great!`
 
-`ReplaceChar()`
+</details>
+
+<details>
+
+<summary><code>ReplaceChar()</code></summary>
 
 ```csharp
-public static string ReplaceChar(this string source, int idx, char replacement)
+public static string ReplaceChar(this string source, int idx, char replacement) { }
 ```
 
 This function allows you to replace a character in a specified index with a replacement character.
@@ -333,15 +395,19 @@ This function allows you to replace a character in a specified index with a repl
 * Character to replace in index `4` (char 5): `i`
 * Result: `Textify`
 
-### Index tools
+</details>
+
+### <mark style="color:$primary;">Index tools</mark>
 
 The following functions allow you to perform index operations on a string.
 
-#### `AllIndexesOf()`
+<details>
+
+<summary><code>AllIndexesOf()</code></summary>
 
 ```csharp
-public static IEnumerable<int> AllIndexesOf(this string target, string value)
-public static IEnumerable<int> AllIndexesOf(this string target, char value)
+public static IEnumerable<int> AllIndexesOf(this string target, string value) { }
+public static IEnumerable<int> AllIndexesOf(this string target, char value) { }
 ```
 
 This function allows you to get all indexes of either a target string or a target character. This allows for more specific replacements or analysis.
@@ -353,14 +419,18 @@ This function allows you to get all indexes of either a target string or a targe
   * Second index: `20` (char 21)
   * Third index: `30` (char 31)
 
-### Format tools
+</details>
+
+### <mark style="color:$primary;">Format tools</mark>
 
 The following functions allow you to perform formatting operations on a string.
 
-#### `FormatString()`
+<details>
+
+<summary><code>FormatString()</code></summary>
 
 ```csharp
-public static string FormatString(this string Format, params object?[]? Vars)
+public static string FormatString(this string Format, params object?[]? Vars) { }
 ```
 
 This function allows you to format a string using a string extension. This makes use of the [`String.Format()`](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-8.0) function, but doesn't throw an exception. If formatting fails, the string is returned unmodified.
@@ -369,10 +439,14 @@ This function allows you to format a string using a string extension. This makes
 * Formatted variables: `2`, `22`, `2018`
 * Result: `Nitrocid KS 0.0.1 first launched 2/22/2018.`
 
-#### `IsStringNumeric()`
+</details>
+
+<details>
+
+<summary><code>IsStringNumeric()</code></summary>
 
 ```csharp
-public static bool IsStringNumeric(this string Expression)
+public static bool IsStringNumeric(this string Expression) { }
 ```
 
 This function checks to see whether this string can be expressed as a number or not. This function also supports double-precision floating point values.
@@ -380,15 +454,19 @@ This function checks to see whether this string can be expressed as a number or 
 * String `"1"` returns `true`
 * String `"a"` returns `false`
 
-### Prefix and suffix tools
+</details>
+
+### <mark style="color:$primary;">Prefix and suffix tools</mark>
 
 The following functions allow you to perform operations on a prefix or a suffix within a string.
 
-#### `AddPrefix()` and `AddSuffix()`
+<details>
+
+<summary><code>AddPrefix()</code> and <code>AddSuffix()</code></summary>
 
 ```csharp
-public static string AddPrefix(this string text, string prefix, bool check = true)
-public static string AddSuffix(this string text, string suffix, bool check = true)
+public static string AddPrefix(this string text, string prefix, bool check = true) { }
+public static string AddSuffix(this string text, string suffix, bool check = true) { }
 ```
 
 These functions allow you to add either a prefix or a suffix to the string, respectively. This makes the task easier for you by automatically checking to see if the string already starts with a prefix or ends with a suffix.
@@ -404,11 +482,15 @@ These functions allow you to add either a prefix or a suffix to the string, resp
 If you want to turn automatic checking off, you can set the `check` argument value to `false`.
 {% endhint %}
 
-#### `RemovePrefix()` and `RemoveSuffix()`
+</details>
+
+<details>
+
+<summary><code>RemovePrefix()</code> and <code>RemoveSuffix()</code></summary>
 
 ```csharp
-public static string RemovePrefix(this string text, string prefix)
-public static string RemoveSuffix(this string text, string suffix)
+public static string RemovePrefix(this string text, string prefix) { }
+public static string RemoveSuffix(this string text, string suffix) { }
 ```
 
 These functions allow you to remove either a prefix or a suffix to the string, respectively. This operation checks to see if the string already starts with a prefix or ends with a suffix.
@@ -416,11 +498,15 @@ These functions allow you to remove either a prefix or a suffix to the string, r
 * Prefixes: `strHello` with `str` as prefix becomes `Hello`.
 * Suffixes: `Hellostr` with `str` as suffix becomes `Hello`.
 
-#### `VerifyPrefix()` and `VerifySuffix()`
+</details>
+
+<details>
+
+<summary><code>VerifyPrefix()</code> and <code>VerifySuffix()</code></summary>
 
 ```csharp
-public static bool VerifyPrefix(this string text, string prefix, StringComparison comparison = StringComparison.CurrentCulture)
-public static bool VerifySuffix(this string text, string suffix, StringComparison comparison = StringComparison.CurrentCulture)
+public static bool VerifyPrefix(this string text, string prefix, StringComparison comparison = StringComparison.CurrentCulture) { }
+public static bool VerifySuffix(this string text, string suffix, StringComparison comparison = StringComparison.CurrentCulture) { }
 ```
 
 These functions allow you to verify a prefix and a suffix within a string by comparing the following:
@@ -432,39 +518,51 @@ These functions allow you to verify a prefix and a suffix within a string by com
 Currently, this comparison is case-sensitive according to your current culture settings determined by your operating system. However, the `comparison` argument lets you control case-sensitivity and culture-specific settings. For instance, you can make use of `OrdinalIgnoreCase` to verify the prefix or the suffix ordinally without checking for case sensitivity.
 {% endhint %}
 
-### Encoding tools
+</details>
+
+### <mark style="color:$primary;">Encoding tools</mark>
 
 The following functions allow you to encode and decode your string easily.
 
-#### `GetBase64Encoded()`
+<details>
+
+<summary><code>GetBase64Encoded()</code></summary>
 
 ```csharp
-public static string GetBase64Encoded(this string text)
+public static string GetBase64Encoded(this string text) { }
 ```
 
 This encodes a specified string and returns a BASE64 encoded string that can be decoded.
 
 * For example, `Nitrocid KS` is converted to `Tml0cm9jaWQgS1M=`.
 
-#### `GetBase64Decoded()`
+</details>
+
+<details>
+
+<summary><code>GetBase64Decoded()</code></summary>
 
 ```csharp
-public static string GetBase64Decoded(this string text)
+public static string GetBase64Decoded(this string text) { }
 ```
 
 This decodes a specified BASE64 string and returns a decoded string that can be encoded.
 
-For example, `Tml0cm9jaWQgS1M=` is converted to Nitrocid KS.&#x20;
+For example, `Tml0cm9jaWQgS1M=` is converted to Nitrocid KS.
 
-### Casing tools
+</details>
+
+### <mark style="color:$primary;">Casing tools</mark>
 
 The following functions allow you to manipulate with cases in a string.
 
-#### `UpperFirst()` and `LowerFirst()`
+<details>
+
+<summary><code>UpperFirst()</code> and <code>LowerFirst()</code></summary>
 
 ```csharp
-public static string UpperFirst(this string target)
-public static string LowerFirst(this string target)
+public static string UpperFirst(this string target) { }
+public static string LowerFirst(this string target) { }
 ```
 
 This allows you to make the first character in a string upper case or lower case.
@@ -472,10 +570,14 @@ This allows you to make the first character in a string upper case or lower case
 * `UpperFirst()`: `hello` becomes `Hello`
 * `LowerFirst()`: `Hello` becomes `hello`
 
-#### `ToTitleCase()`
+</details>
+
+<details>
+
+<summary><code>ToTitleCase()</code></summary>
 
 ```csharp
-public static string ToTitleCase(this string target)
+public static string ToTitleCase(this string target) { }
 ```
 
 This function allows you to change the casing of all words in a string except the small words that should be kept lowercase, such as the following:
@@ -491,7 +593,9 @@ This function allows you to change the casing of all words in a string except th
 
 For example, calling this function on the string `"Reconnecting your network to the work connection..."` becomes `"Reconnecting Your Network to the Work Connection..."`
 
-### Escape tools
+</details>
+
+### <mark style="color:$primary;">Escape tools</mark>
 
 These tools allow you to escape and unescape some of the illegal characters.
 
@@ -501,10 +605,12 @@ The following characters are escaped:
 `\`, `*`, `+`, `?`, `|`, `{`, `[`, `(`, `)`, `^`, `$`, `.`, `#`,  , `-`, `"`, `'`, `` ` ``, `!`
 {% endhint %}
 
-#### `Escape()`
+<details>
+
+<summary><code>Escape()</code></summary>
 
 ```csharp
-public static string Escape(this string target)
+public static string Escape(this string target) { }
 ```
 
 This function allows you to escape some of the illegal characters for string parsing.
@@ -512,10 +618,14 @@ This function allows you to escape some of the illegal characters for string par
 * `"Hello world!"` -> `"Hello\ world\!"`
 * `"Helloworld"` -> `"Helloworld"`
 
-#### `Unescape()`
+</details>
+
+<details>
+
+<summary><code>Unescape()</code></summary>
 
 ```csharp
-public static string Unescape(this string target)
+public static string Unescape(this string target) { }
 ```
 
 This function allows you to unescape some of the illegal characters for human readability.
@@ -523,14 +633,18 @@ This function allows you to unescape some of the illegal characters for human re
 * `"Hello\ world\!"` -> `"Hello world!"`
 * `"Helloworld"` -> `"Helloworld"`
 
-### Letter repetition tools
+</details>
+
+### <mark style="color:$primary;">Letter repetition tools</mark>
 
 The functions that fall into this category allow you to determine the letter repetition pattern by the number of steps.
 
-#### `GetLetterRepetitionPattern()`
+<details>
+
+<summary><code>GetLetterRepetitionPattern()</code></summary>
 
 ```csharp
-public static int GetLetterRepetitionPattern(this string target, int steps)
+public static int GetLetterRepetitionPattern(this string target, int steps) { }
 ```
 
 This function allows you to get a number that represents a letter repetition pattern (LRP) that determines how many times a program needs to step `n` characters, which is specified in the `steps` parameter, before the final step round reaches the end of the string.
@@ -539,11 +653,15 @@ This function allows you to get a number that represents a letter repetition pat
 * `Hello` with 7 LRP steps returns 5 rounds
 * `Hello` with 5 LRP steps returns 1 round
 
-#### `GetLetterRepetitionPatternTable()`
+</details>
+
+<details>
+
+<summary><code>GetLetterRepetitionPatternTable()</code></summary>
 
 ```csharp
-public static ReadOnlyDictionary<int, int> GetLetterRepetitionPatternTable(this string target, bool twice = false)
-public static ReadOnlyDictionary<int, int> GetLetterRepetitionPatternTable(this string target, int iterations)
+public static ReadOnlyDictionary<int, int> GetLetterRepetitionPatternTable(this string target, bool twice = false) { }
+public static ReadOnlyDictionary<int, int> GetLetterRepetitionPatternTable(this string target, int iterations) { }
 ```
 
 These functions allow you to get a read-only dictionary that represents a number of steps taken multipled by the number of iterations.
@@ -553,10 +671,14 @@ These functions allow you to get a read-only dictionary that represents a number
 
 For example, a string with the length of 6 returns a dictionary consisting of the following values: `{ 1, 6 }, { 2, 3 }, { 3, 2 }, { 4, 3 }, { 5, 6 }, { 6, 1 }`
 
-#### `GetListOfRepeatedLetters()`
+</details>
+
+<details>
+
+<summary><code>GetListOfRepeatedLetters()</code></summary>
 
 ```csharp
-public static ReadOnlyDictionary<char, int> GetListOfRepeatedLetters(this string target, bool removeSingle = false)
+public static ReadOnlyDictionary<char, int> GetListOfRepeatedLetters(this string target, bool removeSingle = false) { }
 ```
 
 This allows you to get a list of repeated letters in a read-only dictionary form:
@@ -575,14 +697,18 @@ For example, a list of repeated letters in the `Hello!` string becomes:
 * WIthout single letter occurrences:
   * `{ 'l', 2 }`
 
-### Logical comparsion tools
+</details>
+
+### <mark style="color:$primary;">Logical comparsion tools</mark>
 
 These tools allow you to perform logical comparison operations in a string.
 
-#### `CompareLogical()`
+<details>
+
+<summary><code>CompareLogical()</code></summary>
 
 ```csharp
-public static int CompareLogical(string source, string compare)
+public static int CompareLogical(string source, string compare) { }
 ```
 
 This function allows you to compare two strings logically (that is, alphanumerically) similar to how Windows Explorer sorts files. This returns either a result of [`CompareTo()`](https://learn.microsoft.com/en-us/dotnet/api/system.string.compareto?view=net-8.0) against two strings or a result of the same function against two numeric chunks detected.
@@ -591,28 +717,36 @@ This function allows you to compare two strings logically (that is, alphanumeric
 Usually, you'll only need to use the `LogicalComparer` class as a comparer when sorting strings this way.
 {% endhint %}
 
-`OrderLogically()` and `OrderDescendLogically()`
+</details>
+
+<details>
+
+<summary><code>OrderLogically()</code> and <code>OrderDescendLogically()</code></summary>
 
 ```csharp
 // Normal string arrays
-public static string[] OrderLogically(this string[] source)
-public static string[] OrderDescendLogically(this string[] source)
+public static string[] OrderLogically(this string[] source) { }
+public static string[] OrderDescendLogically(this string[] source) { }
 
 // IEnumerables
-public static IEnumerable<string> OrderLogically(this IEnumerable<string> source)
-public static IEnumerable<string> OrderDescendLogically(this IEnumerable<string> source)
+public static IEnumerable<string> OrderLogically(this IEnumerable<string> source) { }
+public static IEnumerable<string> OrderDescendLogically(this IEnumerable<string> source) { }
 ```
 
 This function simplifies the usage of the `LogicalComparer` class by wrapping it with the [`OrderBy()`](https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.orderby?view=net-8.0) and the [`OrderByDescending()`](https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.orderbydescending?view=net-8.0) functions.
 
-### Case sensitive and insensitive comparison tools
+</details>
+
+### <mark style="color:$primary;">Case sensitive and insensitive comparison tools</mark>
 
 These tools allow you to test strings for equality, prefixes, and suffixes in different ways.
 
-#### `EqualsNoCase()`
+<details>
+
+<summary><code>EqualsNoCase()</code></summary>
 
 ```csharp
-public static bool EqualsNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+public static bool EqualsNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase) { }
 ```
 
 This function allows you to test string equality easily without checking for case sensitivity.
@@ -628,10 +762,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.OrdinalIgnoreCase`
 {% endhint %}
 
-#### `EqualsCase()`
+</details>
+
+<details>
+
+<summary><code>EqualsCase()</code></summary>
 
 ```csharp
-public static bool EqualsCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal)
+public static bool EqualsCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal) { }
 ```
 
 This function allows you to test string equality easily while checking for case sensitivity.
@@ -647,10 +785,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.Ordinal`
 {% endhint %}
 
-#### `StartsWithNoCase()`
+</details>
+
+<details>
+
+<summary><code>StartsWithNoCase()</code></summary>
 
 ```csharp
-public static bool StartsWithNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase))
+public static bool StartsWithNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase)) { }
 ```
 
 This function allows you to test string prefix easily without checking for case sensitivity.
@@ -666,10 +808,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.OrdinalIgnoreCase`
 {% endhint %}
 
-#### `StartsWithCase()`
+</details>
+
+<details>
+
+<summary><code>StartsWithCase()</code></summary>
 
 ```csharp
-public static bool StartsWithCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal)
+public static bool StartsWithCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal) { }
 ```
 
 This function allows you to test string prefix easily while checking for case sensitivity.
@@ -685,10 +831,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.Ordinal`
 {% endhint %}
 
-#### `EndsWithNoCase()`
+</details>
+
+<details>
+
+<summary><code>EndsWithNoCase()</code></summary>
 
 ```csharp
-public static bool EndsWithNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase))
+public static bool EndsWithNoCase(this string source, string target, StringComparison comparison = StringComparison.OrdinalIgnoreCase)) { }
 ```
 
 This function allows you to test string suffix easily without checking for case sensitivity.
@@ -704,10 +854,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.OrdinalIgnoreCase`
 {% endhint %}
 
-#### `EndsWithCase()`
+</details>
+
+<details>
+
+<summary><code>EndsWithCase()</code></summary>
 
 ```csharp
-public static bool EndsWithCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal)
+public static bool EndsWithCase(this string source, string target, StringComparison comparison = StringComparison.Ordinal) { }
 ```
 
 This function allows you to test string suffix easily while checking for case sensitivity.
@@ -723,10 +877,14 @@ The comparison argument must be supplied with one of the following comparison op
 * `StringComparison.Ordinal`
 {% endhint %}
 
-#### `ContainsWithNoCase()`
+</details>
+
+<details>
+
+<summary><code>ContainsWithNoCase()</code></summary>
 
 ```csharp
-public static bool ContainsWithNoCase(this string source, string target)
+public static bool ContainsWithNoCase(this string source, string target) { }
 ```
 
 This function allows you to check a substring without checking for case sensitivity.
@@ -734,26 +892,34 @@ This function allows you to check a substring without checking for case sensitiv
 * Testing `Hello` with `lo` returns true
 * Testing `Hello` with `Lo` returns true
 
-### Wide character and string tools
+</details>
+
+### <mark style="color:$primary;">Wide character and string tools</mark>
 
 The following functions allow you to perform operations with wide strings and characters on a string.
 
-#### `GetWideChars()`
+<details>
+
+<summary><code>GetWideChars()</code></summary>
 
 ```csharp
-public static WideChar[] GetWideChars(this string sentence)
+public static WideChar[] GetWideChars(this string sentence) { }
 ```
 
 This function allows you to get a list of wide characters that are found within a string. A wide character description can be found in [this page](../extra-features/wide-characters.md).
 
-### Miscellaneous tools
+</details>
+
+### <mark style="color:$primary;">Miscellaneous tools</mark>
 
 The following functions allow you to perform even more operations on a string.
 
-#### `ShiftLetters()`
+<details>
+
+<summary><code>ShiftLetters()</code></summary>
 
 ```csharp
-public static string ShiftLetters(this string text, int shift)
+public static string ShiftLetters(this string text, int shift) { }
 ```
 
 This function allows you to easily shift characters within a string by a number of character shifting steps that can be specified from `-255` to `255`.
@@ -761,10 +927,14 @@ This function allows you to easily shift characters within a string by a number 
 * Shift `Hello` by `1`: `Ifmmp`
 * Shift `Hello` by `-1`: `Gdkkn`
 
-#### `TruncateString()`
+</details>
+
+<details>
+
+<summary><code>TruncateString()</code></summary>
 
 ```csharp
-public static string TruncateString(this string target, int threshold)
+public static string TruncateString(this string target, int threshold) { }
 ```
 
 This function allows you to truncate a string into a specified string length. This helps in situations where wrapping is not possible or the user needs a truncated string.
@@ -772,21 +942,29 @@ This function allows you to truncate a string into a specified string length. Th
 * `Nitrocid is awesome and is great!` with the truncation threshold of `20`: `Nitrocid is awesome ...`
 
 {% hint style="info" %}
-This function is also found in Terminaux, though they also employ VT sequence support to help process them. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
+This function is also found in Terminaux, though it also employs VT sequence support to help process the text. For console applications, it's better to use the [Terminaux](https://app.gitbook.com/s/G0KrE9Uk2AiblqjWtpAo/usage/console-tools/console-extensions) version.
 {% endhint %}
 
-#### `Reverse()`
+</details>
+
+<details>
+
+<summary><code>Reverse()</code></summary>
 
 ```csharp
-public static string Reverse(this string target)
+public static string Reverse(this string target) { }
 ```
 
 This function allows you to easily reverse the order of characters in a string. For example, `Reversed` is `desreveR`.
 
-#### `GetEnclosedWordFromIndex()`
+</details>
+
+<details>
+
+<summary><code>GetEnclosedWordFromIndex()</code></summary>
 
 ```csharp
-public static string GetEnclosedWordFromIndex(this string target, int sourceIdx, bool includeSymbols = false)
+public static string GetEnclosedWordFromIndex(this string target, int sourceIdx, bool includeSymbols = false) { }
 ```
 
 This function splits the string by spaces internally, then determines what word is from a specified source index. You can also include the symbols in the resultant enclosed word. Here are the following examples:
@@ -798,10 +976,14 @@ This function splits the string by spaces internally, then determines what word 
   * `Hello world!` at index `2`: `Hello`
   * `Hello world!` at index `8`: `World!`
 
-#### `GetIndexOfEnclosedWordFromIndex()`
+</details>
+
+<details>
+
+<summary><code>GetIndexOfEnclosedWordFromIndex()</code></summary>
 
 ```csharp
-public static int GetIndexOfEnclosedWordFromIndex(this string target, int sourceIdx, bool includeSymbols = false)
+public static int GetIndexOfEnclosedWordFromIndex(this string target, int sourceIdx, bool includeSymbols = false) { }
 ```
 
 This function splits the string by spaces internally, then determines what word is from a specified source index, and gets the index of its first character. You can also include the symbols in the resultant enclosed word. Here are the following examples:
@@ -813,10 +995,14 @@ This function splits the string by spaces internally, then determines what word 
   * `!Hello world!` at index `2`: `0`
   * `Hello world!` at index `8`: `6`
 
-#### `ReadNullTerminatedString()`
+</details>
+
+<details>
+
+<summary><code>ReadNullTerminatedString()</code></summary>
 
 ```csharp
-public static string ReadNullTerminatedString(this string source, int offset)
+public static string ReadNullTerminatedString(this string source, int offset) { }
 ```
 
 This function allows you to read a null-terminated string, optionally chopping the source string starting from `offset` index.
@@ -825,26 +1011,38 @@ This function allows you to read a null-terminated string, optionally chopping t
 * `Hello\0Goodbye` with offset 5 becomes an empty string
 * `Hello\0Goodbye` with offset 6 becomes `Goodbye`
 
-#### `IsPalindrome()`
+</details>
+
+<details>
+
+<summary><code>IsPalindrome()</code></summary>
 
 ```csharp
-public static bool IsPalindrome(this string target, bool caseSensitive = false)
+public static bool IsPalindrome(this string target, bool caseSensitive = false) { }
 ```
 
 This function checks to see if a specified string is a palindrome or not. A string is considered to be a palindrome if the other half of the string is a mirror of the first half, such as `madam` or `noon`. Strings such as `Word` and `Laura` are not palindromes.
 
-#### `ToStringBuilder()`
+</details>
+
+<details>
+
+<summary><code>ToStringBuilder()</code></summary>
 
 ```csharp
-public static StringBuilder ToStringBuilder(this string source)
+public static StringBuilder ToStringBuilder(this string source) { }
 ```
 
 This function allows you to easily get a string builder from a string to perform operations on a string without allocations.
 
-#### `BreakSurrogates()`
+</details>
+
+<details>
+
+<summary><code>BreakSurrogates()</code></summary>
 
 ```csharp
-public static (char high, char low) BreakSurrogates(this string source)
+public static (char high, char low) BreakSurrogates(this string source) { }
 ```
 
 This function allows you to break a string that consists of high surrogate and low surrogate characters into their individual character representations of the surrogates.
@@ -853,175 +1051,4 @@ This function allows you to break a string that consists of high surrogate and l
 * `\U0001F923` becomes `('\ud83e', '\udd23')`
 * `\U0001FAE1` becomes `('\ud83e', '\udee1')`
 
-## Character manipulation
-
-Character management tools can be found in the `CharManager` class under the `Textify.General` namespace. They make it easier for you to manipulate with individual characters.
-
-### `NewLine`
-
-```csharp
-public static string NewLine
-```
-
-This property returns a new line that is returned by the [`Environment.NewLine`](https://learn.microsoft.com/en-us/dotnet/api/system.environment.newline?view=net-8.0) property. This changes depending on the operating system, such as `CR` + `LF` on Windows and `LF` on Unix systems.
-
-### `GetAllAsciiChars()`
-
-```csharp
-public static char[] GetAllAsciiChars()
-```
-
-Gets all 256 ASCII characters. You can refer to the ASCII table [here](https://www.asciitable.com/).
-
-### `GetAllChars()`
-
-```csharp
-public static char[] GetAllChars()
-```
-
-Gets all Unicode characters ranging from `\u0000` to `\uFFFF` in hexadecimal representation.
-
-### `GetAllLettersAndNumbers()`
-
-```csharp
-public static char[] GetAllLettersAndNumbers(bool unicode = true)
-```
-
-Gets all letter and number characters. If `unicode` is set to true, it returns all letter and number characters found within Unicode. Otherwise, it uses the ASCII table to look up letters and numbers.
-
-### `GetAllLetters()`
-
-```csharp
-public static char[] GetAllLetters(bool unicode = true)
-```
-
-Gets all letter characters. If `unicode` is set to true, it returns all letter characters found within Unicode. Otherwise, it uses the ASCII table to look up letters.
-
-### `GetAllNumbers()`
-
-```csharp
-public static char[] GetAllNumbers(bool unicode = true)
-```
-
-Gets all number characters. If `unicode` is set to true, it returns all number characters found within Unicode. Otherwise, it uses the ASCII table to look up numbers.
-
-### `GetAllDigitChars()`
-
-```csharp
-public static char[] GetAllDigitChars(bool unicode = true)
-```
-
-Gets all characters that represent a digit. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllControlChars()`
-
-```csharp
-public static char[] GetAllControlChars()
-```
-
-Gets all control characters from the whole Unicode table, such as escape character, bell character, and more.
-
-### `GetAllRealControlChars()`
-
-```csharp
-public static char[] GetAllRealControlChars()
-```
-
-Gets all control characters from the whole Unicode table, such as escape character, bell character, and more.
-
-### `GetAllSurrogateChars()`
-
-```csharp
-public static char[] GetAllSurrogateChars()
-```
-
-Gets all high and low surrogate characters from the whole Unicode table.
-
-### `GetAllHighSurrogateChars()`
-
-```csharp
-public static char[] GetAllHighSurrogateChars()
-```
-
-Gets all high surrogate characters from the whole Unicode table.
-
-### `GetAllLowSurrogateChars()`
-
-```csharp
-public static char[] GetAllLowSurrogateChars()
-```
-
-Gets all low surrogate characters from the whole Unicode table.
-
-### `GetAllLowerChars()`
-
-```csharp
-public static char[] GetAllLowerChars(bool unicode = true)
-```
-
-Gets all lower case characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllUpperChars()`
-
-```csharp
-public static char[] GetAllUpperChars(bool unicode = true)
-```
-
-Gets all upper case characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllPunctuationChars()`
-
-```csharp
-public static char[] GetAllPunctuationChars(bool unicode = true)
-```
-
-Gets all punctuation characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllSeparatorChars()`
-
-```csharp
-public static char[] GetAllSeparatorChars(bool unicode = true)
-```
-
-Gets all separator characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllSymbolChars()`
-
-```csharp
-public static char[] GetAllSymbolChars(bool unicode = true)
-```
-
-Gets all symbol characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetAllWhitespaceChars()`
-
-```csharp
-public static char[] GetAllWhitespaceChars(bool unicode = true)
-```
-
-Gets all whitespace characters. If `unicode` is set to true, it returns all such characters found within Unicode. Otherwise, it uses the ASCII table to look up such characters.
-
-### `GetEsc()`
-
-```csharp
-public static char GetEsc()
-```
-
-Gets an escape character. This function is a wrapper of the escape character, `\u001b`.
-
-### `IsControlChar()`
-
-```csharp
-public static bool IsControlChar(char ch)
-```
-
-Checks whether the specified character is a real control character. This checks to see if the following conditions are true:
-
-* The character is greater than the NULL character (`\u0000`) and less than the BACKSPACE character (`\u0008`)
-* The character is greater than the CARRIAGE RETURN character (`\u000D`) and less than the SUBSTITUTE character (`\u001A`)
-
-Mathematically, the algorithm that this function uses can be described as:
-
-$$
-f(c) =\begin{cases}1 & 0_{16} < c < 8_{16}\\1 & D_{16} < c < 1A_{16}\\0 & other\end{cases}
-$$
+</details>

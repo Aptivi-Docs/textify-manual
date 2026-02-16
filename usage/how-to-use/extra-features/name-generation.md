@@ -5,15 +5,57 @@ icon: square-user
 
 # Name Generation
 
-Using this function is very simple! Just use the `Textify.NameGen` namespace in any piece of code you want to use the function, as in: `using Textify.Data.Analysis.NameGen;`
+Name generation is another extra Textify feature that allows you to randomly select a name and a surname.
 
-Just use the `NameGenerator` class that contains:
+***
 
-* `GenerateNames()`
-* `GenerateNames(int)`
-* `GenerateNames(int, string, string, string, string)`
+## <mark style="color:$primary;">Usage</mark>
 
-These functions call the `PopulateNames()` function to download the list of words and installs the list of words to the words list for the two above functions to use.
+You can use the `NameGenerator` class found in the `Textify.Data.NameGen` namespace.
+
+<details>
+
+<summary>Available functions</summary>
+
+You can use the `NameGenerator` class that contains:
+
+| Function               | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| `PopulateNames()`      | Populates the names                              |
+| `GenerateNames()`      | Generates random names based on conditions       |
+| `GenerateFirstNames()` | Generates random first names based on conditions |
+| `GenerateLastNames()`  | Generates random last names based on conditions  |
+| `FindFirstNames()`     | Finds the first names                            |
+| `FindLastNames()`      | Finds the last names                             |
+| `GetAllFirstNames()`   | Gets all first names                             |
+| `GetAllLastNames()`    | Gets all last names                              |
+
+{% hint style="info" %}
+The asynchronous version of the functions is provided for web applications and other apps that require async operations.
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary>Available gender types</summary>
+
+You can specify the name gender type using the `NameGenderType` enumeration that has the following values:
+
+| Value            | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `Unified`        | Uses the list of both male and female names |
+| `Female`         | Uses the list of female names               |
+| `Male`           | Uses the list of male names                 |
+| `FemaleImplicit` | Uses the list of implicit female names      |
+| `MaleImplicit`   | Uses the list of implicit male names        |
+| `Natural`        | Uses the list of unified natural names      |
+
+</details>
+
+<details>
+
+<summary>Conditional name generation</summary>
 
 If the conditional version is used, you can specify the maximum amount of names, as well as supplying the name suffix and prefix and the surname suffix and prefix.
 
@@ -31,6 +73,4 @@ Thalia Ermey
 (...)
 ```
 
-You can specify the name gender type using the `NameGenderType` enumeration when calling any of the first name generation functions.
-
-In addition to that, you can get the full list of first and last names with the ability to consider the gender selection.
+</details>

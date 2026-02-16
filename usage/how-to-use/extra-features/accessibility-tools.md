@@ -5,19 +5,21 @@ icon: wheelchair-move
 
 # Accessibility Tools
 
-Textify not only provides all the common text tools, but it also provides the accessibility tools for people with disabilities. This ensures that applications become usable for such people. The following tools have been implemented:
+Textify not only provides all the common text tools, but it also provides the accessibility tools for people with disabilities. This ensures that applications become usable for such people.
 
-* Braille conversion
+***
 
-The below sections explain the details of the above tools.
-
-## Braille conversion
+## <mark style="color:$primary;">Braille conversion</mark>
 
 In the `BrailleBuilder` class, you can initiate the Braille text conversion. Currently, we only support text to Braille conversion. You can perform this conversion by calling the `ToBraille()` function, passing it the sentence of your choice. This uses the Braille map that Textify provides to let you convert text to Braille.
 
 {% hint style="info" %}
 Some elevators provide Braille number representations usually found at the bottom of the floor number in the buttons. For example, you may find `⠼⠙` under the number `4` that indicates the fourth floor.
 {% endhint %}
+
+<details>
+
+<summary>Conversion process</summary>
 
 Calling the above function is so simple! You can just call it like this:
 
@@ -33,3 +35,5 @@ Make sure that you have a font that supports the Braille characters. For GUI app
 {% hint style="warning" %}
 Currently, this converter supports a limited set of characters, so you may not be able to convert all characters using this function. We're working on it across several releases to enhance it.
 {% endhint %}
+
+</details>
