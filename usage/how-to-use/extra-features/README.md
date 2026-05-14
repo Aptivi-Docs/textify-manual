@@ -27,6 +27,10 @@ The following features are available in `Textify.Data`:
 [figlet-text.md](figlet-text.md)
 {% endcontent-ref %}
 
+{% content-ref url="cowsay-text.md" %}
+[cowsay-text.md](cowsay-text.md)
+{% endcontent-ref %}
+
 {% content-ref url="emoji-management.md" %}
 [emoji-management.md](emoji-management.md)
 {% endcontent-ref %}

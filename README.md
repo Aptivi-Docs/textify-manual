@@ -12,6 +12,12 @@ Welcome to Textify! It's a C# library that allows you to manipulate with text in
 Below is the release history of the library:
 
 {% updates format="full" %}
+{% update date="2026-05-14" %}
+## <mark style="color:$primary;">v2.14.0</mark>
+
+<mark style="color:green;">Added cowsay</mark>
+{% endupdate %}
+
 {% update date="2025-12-01" %}
 ## <mark style="color:$primary;">v2.13.5</mark>
 

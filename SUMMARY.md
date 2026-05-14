@@ -20,6 +20,7 @@
     * [Word Management](usage/how-to-use/extra-features/word-management.md)
     * [Accessibility Tools](usage/how-to-use/extra-features/accessibility-tools.md)
     * [Figlet Text](usage/how-to-use/extra-features/figlet-text.md)
+    * [Cowsay Text](usage/how-to-use/extra-features/cowsay-text.md)
     * [Emoji Management](usage/how-to-use/extra-features/emoji-management.md)
     * [Wide Characters](usage/how-to-use/extra-features/wide-characters.md)
 
