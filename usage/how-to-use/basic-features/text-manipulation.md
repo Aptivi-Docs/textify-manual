@@ -252,6 +252,24 @@ This function allows you to normalize the new line characters to convert them to
 
 </details>
 
+<details>
+
+<summary><code>TrimNewLines()</code></summary>
+
+{% code expandable="true" %}
+```csharp
+public static string TrimNewLines(this string text) { }
+public static string[] TrimNewLines(this string[] lines) { }
+public static List<string> TrimNewLines(this List<string> lines) { }
+```
+{% endcode %}
+
+This function allows you to trim the new lines from a string that contains new lines from the first lines and the last lines of the string. It can also remove empty lines from the start and the end of the string array.
+
+Spaces that are in between the first non-empty line and the last non-empty line are not removed, but preserved.
+
+</details>
+
 ### <mark style="color:$primary;">Starts, Ends, and Contains tools</mark>
 
 The following functions allow you to perform different kinds of beginning, ending, and substring detection in the string.
@@ -1050,5 +1068,21 @@ This function allows you to break a string that consists of high surrogate and l
 * `\U0001F607` becomes `('\ud83d', '\ude07')`
 * `\U0001F923` becomes `('\ud83e', '\udd23')`
 * `\U0001FAE1` becomes `('\ud83e', '\udee1')`
+
+</details>
+
+<details>
+
+<summary><code>Paragraphize()</code></summary>
+
+{% code expandable="true" %}
+```csharp
+public static string[] Paragraphize(this string text, bool wrapLines = true, int wrapWidth = 75) { }
+```
+{% endcode %}
+
+This function allows you to turn a piece of text to an array of lines that are processed for paragraph rendering. This means that excess new lines are removed from the string, while allowing you to choose whether to wrap the lines or not. Currently, this function wraps the lines, but you can tell it not to wrap them.
+
+New lines are trimmed from the first and the last new lines, while excess new lines are removed from the string, replacing them with only one new line.
 
 </details>
