@@ -68,6 +68,80 @@ This function allows you to easily get the character width type from a specified
 
 </details>
 
+### <mark style="color:$primary;">Cell width tools</mark>
+
+The below tools allow you to get the width of a text.
+
+<details>
+
+<summary><code>EstimateCellWidth()</code></summary>
+
+```csharp
+public static int EstimateCellWidth(string sentence) { }
+public static int EstimateCellWidth(string sentence, int index) { }
+```
+
+This uses the Unicode width database that Textify maintains internally to be able to determine a cell width by processing the text. The above functions are used to determine whether a character uses one, two, or zero cells, and adds it to the width sum variable. Some of the characters are assigned as unassigned characters, and their handling can be controlled by the following properties:
+
+```csharp
+public static bool UseTwoCellsForUnassignedChars { get; set; }
+```
+
+{% hint style="info" %}
+This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
+{% endhint %}
+
+{% code title="Example" lineNumbers="true" %}
+```
+"\u001A" -> 0
+"A" -> 1
+"**" -> 2
+"你你" -> 4
+```
+{% endcode %}
+
+</details>
+
+<details>
+
+<summary><code>EstimateZeroWidths()</code></summary>
+
+```csharp
+public static int EstimateZeroWidths(string sentence) { }
+```
+
+This uses the Unicode width database that Textify maintains internally to be able to return a sum of characters in a string that take up zero cells. Some of the characters are assigned as unassigned characters, and their handling can be controlled by the following properties:
+
+```csharp
+public static bool UseTwoCellsForUnassignedChars { get; set; }
+```
+
+{% hint style="info" %}
+This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary><code>EstimateFullWidths()</code></summary>
+
+```csharp
+public static int EstimateFullWidths(string sentence) { }
+```
+
+This uses the Unicode width database that Textify maintains internally to be able to return a sum of characters in a string that take up two cells. Some of the characters are assigned as unassigned characters, and their handling can be controlled by the following properties:
+
+```csharp
+public static bool UseTwoCellsForUnassignedChars { get; set; }
+```
+
+{% hint style="info" %}
+This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
+{% endhint %}
+
+</details>
+
 ### <mark style="color:$primary;">Wrapped sentence tools</mark>
 
 The following functions allow you to wrap a long string into a specified length, both character-wise and word-wise.
@@ -331,6 +405,49 @@ This checks the string for a list of substrings in the OR and the AND logical co
   * For example, this string `"Branch-Prod-5.0"` returns `true` if either the `"Prod"` or the `"Staging"` substrings match.
 * `ContainsAllOf()` checks to see if all of the substrings is found within the string.
   * For example, this string `"Branch-Prod-5.0"` returns `true` if both the `"Prod"` and the `"Branch"` substrings match, but returns `false` if one of the substrings doesn't match, for example, `"Branch-Staging-5.0"`.
+
+</details>
+
+### <mark style="color:$primary;">Alignment and positioning tools</mark>
+
+The following functions allow you to determine the text alignment and to pad the string with a padding character, whether it's from the left, the middle, or the right.
+
+<details>
+
+<summary><code>DetermineTextAlignment()</code></summary>
+
+```csharp
+public static int DetermineTextAlignment(string text, int width, TextAlignment alignment, int leftMargin = 0) { }
+```
+
+This function returns the aligned text starting position which you can use to write the aligned text. This number is a zero-based number.
+
+{% hint style="info" %}
+This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary><code>PadLeft()</code>, <code>PadRight()</code>, <code>PadMiddle()</code>, and <code>Pad()</code></summary>
+
+```csharp
+public static string PadLeft(string text, int totalLength) { }
+public static string PadLeft(string text, int totalLength, string padder) { }
+public static string PadRight(string text, int totalLength) { }
+public static string PadRight(string text, int totalLength, string padder) { }
+public static string PadMiddle(string text, int totalLength) { }
+public static string PadMiddle(string text, int totalLength, string padder) { }
+public static string Pad(string text, int totalLength, TextAlignment alignment) { }
+public static string Pad(string text, int totalLength, string padder, TextAlignment alignment) { }
+```
+
+This function returns a padded string with the specified total length, taking the string width instead of length into account to ensure correct rendering in consoles.
+
+{% hint style="info" %}
+This is primarily used for console operations, and is a good start to implement console applications that support CJK, such as console applications that use [Terminaux](https://app.gitbook.com/o/fj052nYlsxW9IdL3bsZj/s/G0KrE9Uk2AiblqjWtpAo/).
+{% endhint %}
 
 </details>
 

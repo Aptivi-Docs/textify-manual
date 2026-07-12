@@ -278,3 +278,49 @@ A difference JSON object in this state is an object that contains two properties
 * `-`: Indicates a value of the source
 
 </details>
+
+***
+
+## <mark style="color:$primary;">Grapheme cluster tools</mark>
+
+All grapheme cluster tools can be found in the `GraphemeCluster` class that you can find within the `Textify.Tools` namespace. However, they are not extensions to strings.
+
+<details>
+
+<summary><code>GetLength()</code> and <code>GetLengthBackward()</code></summary>
+
+```csharp
+public static int GetLength(string text, int pos) { }
+public static int GetLengthBackward(string text, int pos) { }
+```
+
+Using these two functions, you can perform the following operations on a text:
+
+* `GetLength()` returns a length of the grapheme cluster in a specified position from the text, with forward read.
+* `GetLengthBackward()` returns a length of the grapheme cluster in a specified position from the text, with backward read.
+
+</details>
+
+<details>
+
+<summary><code>GetClusterWidth()</code></summary>
+
+```csharp
+public static int GetClusterWidth(string text, int clusterStart) { }
+```
+
+Using the above function, you can get the grapheme cluster width (how many cells does a grapheme cluster take) with the specified start position.
+
+</details>
+
+<details>
+
+<summary><code>GetStart()</code></summary>
+
+```csharp
+public static int GetStart(string text, int index) { }
+```
+
+Using the above function, you can get the starting position of a grapheme cluster with the specified index from the text.
+
+</details>

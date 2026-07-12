@@ -12,6 +12,32 @@ Welcome to Textify! It's a C# library that allows you to manipulate with text in
 Below is the release history of the library:
 
 {% updates format="full" %}
+{% update date="2026-07-06" %}
+## <mark style="color:$primary;">v2.14.2.1</mark>
+
+<mark style="color:yellow;">Fixed sentence wrapper wrapping beyond maximum length in some cases</mark>
+{% endupdate %}
+
+{% update date="2026-07-06" %}
+## <mark style="color:$primary;">v2.14.2</mark>
+
+<mark style="color:green;">Added grapheme cluster tools</mark>
+
+<mark style="color:green;">Added padding tools</mark>
+{% endupdate %}
+
+{% update date="2026-06-26" %}
+## <mark style="color:$primary;">v2.14.1</mark>
+
+<mark style="color:green;">Added paragraph tools</mark>
+{% endupdate %}
+
+{% update date="2026-05-15" %}
+## <mark style="color:$primary;">v2.14.0.1</mark>
+
+<mark style="color:yellow;">Improved cowsay parsing to take different syntax into account</mark>
+{% endupdate %}
+
 {% update date="2026-05-14" %}
 ## <mark style="color:$primary;">v2.14.0</mark>
 
